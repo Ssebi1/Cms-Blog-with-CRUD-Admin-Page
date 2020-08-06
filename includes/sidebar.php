@@ -61,7 +61,7 @@
                         <form action="includes/login.php" method="post">
 
                             <div class="form-group">
-                                <input type="text" name="username" class="form-control" placeholder="Enter Username">
+                                <input autocomplete="on" type="text" name="username" class="form-control" placeholder="Enter Username">
                             </div>
 
                             <div class="input-group" >

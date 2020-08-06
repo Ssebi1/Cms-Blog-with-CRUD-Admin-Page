@@ -37,7 +37,6 @@
             <th>Views</th>
             <th>Comments</th>
             <th>Date</th>
-            <th>Edit</th>
         </tr>
     </thead>
 
@@ -96,8 +95,14 @@
         
             <td><a href="comments.php?post_id=<?php echo $post_id; ?>"><?php echo $count_comments ?></td>
             <td><?php echo $post_date ?> <br> at  <?php echo $post_hour ?></td>
-            <td><a href="posts.php?source=edit_post&edit_id=<?php echo $post_id; ?>">Edit</a></td>
-            <td><a rel="<?php echo $post_id; ?>" href="javascript:void(0)" class="delete_link">Delete</a></td>
+            <td><a class="btn btn-link" href="posts.php?source=edit_post&edit_id=<?php echo $post_id; ?>">Edit</a></td>
+
+            <form method="post">
+                <input type="hidden" name="post_id" value="<?php echo $post_id; ?>">
+                <td><input class="btn btn-link" type="submit" name="delete" value="Delete"></td>
+            </form>
+
+            
         </tr>
 
         <?php

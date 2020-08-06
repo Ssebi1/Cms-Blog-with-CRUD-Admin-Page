@@ -1,7 +1,9 @@
 <?php
 include "includes/db.php";
 include "includes/header.php";
-        if(isset($_POST['submit']))
+        if(isset($_SESSION['username']))
+            header("Location: index.php");
+        else if(isset($_POST['submit']))
         {
             $firstname = escape($_POST['firstname']);
             $lastname = escape($_POST['lastname']);
@@ -11,13 +13,7 @@ include "includes/header.php";
 
             $password = password_hash($password,PASSWORD_BCRYPT,array('cost' => 10));
 
-            //Duplicate User
-            
-
-            //Duplicate Email
-            
-
-            if(empty($username) || empty($password) || empty($email))
+            if(empty($username) || empty($password) || empty($email) || empty($firstname) || empty($lastname))
             {
                 ?>
                     <div class="alert alert-danger alert-dismissible fade in center-block" style="width: 50%;">
@@ -84,19 +80,19 @@ include "includes/header.php";
                     <form role="form" action="registration.php" method="post" id="login-form" autocomplete="off">
                         <div class="form-group">
                             <label for="firstname" class="sr-only">Firstname</label>
-                            <input type="text" name="firstname" id="firstname" class="form-control" placeholder="Firstname">
+                            <input autocomplete="on" type="text" name="firstname" id="firstname" class="form-control" placeholder="Firstname" value="<?php if(isset($firstname)) echo $firstname; ?>">
                         </div>
                         <div class="form-group">
                             <label for="lastname" class="sr-only">Lastname</label>
-                            <input type="text" name="lastname" id="lastname" class="form-control" placeholder="Lastname">
+                            <input autocomplete="on" type="text" name="lastname" id="lastname" class="form-control" placeholder="Lastname" value="<?php if(isset($lastname)) echo $lastname; ?>">
                         </div>
                         <div class="form-group">
                             <label for="username" class="sr-only">username</label>
-                            <input type="text" name="username" id="username" class="form-control" placeholder="Username">
+                            <input autocomplete="on" type="text" name="username" id="username" class="form-control" placeholder="Username" value="<?php if(isset($username)) echo $username; ?>">
                         </div>
                          <div class="form-group">
                             <label for="email" class="sr-only">Email</label>
-                            <input type="email" name="email" id="email" class="form-control" placeholder="somebody@example.com">
+                            <input autocomplete="on" type="email" name="email" id="email" class="form-control" placeholder="somebody@example.com" value="<?php if(isset($email)) echo $email; ?>">
                         </div>
                          <div class="form-group">
                             <label for="password" class="sr-only">Password</label>

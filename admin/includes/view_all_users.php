@@ -34,14 +34,16 @@
                     <td><?php echo $user_lastname ?></td>
                     <td><?php echo $user_email ?></td>
                     <td><?php echo $user_role ?></td>
-                    <?php 
-                        if($user_role=="admin")
-                            echo "<td><a href='users.php?source=view_all_users&change_to_sub= {$user_id}'>Change Role</a></td>";
-                        else
-                            echo "<td><a href='users.php?source=view_all_users&change_to_admin= {$user_id}'>Change Role</a></td>";
-                    ?>
-                    <td><a href="users.php?source=edit_user&edit=<?php echo $user_id ?>">Edit</a></td>
-                    <td><a href="users.php?source=view_all_users&delete=<?php echo $user_id ?>">Delete</a></td>
+                    <form method="post">
+                        <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
+                        <input type="hidden" name="user_role" value="<?php echo $user_role; ?>">
+                        <td><input class="btn btn-link" type="submit" name="change_role" value="Change Role"></td>
+                    </form>
+                    <td><a class="btn btn-link" href="users.php?source=edit_user&edit=<?php echo $user_id ?>">Edit</a></td>
+                    <form method="post">
+                        <input type="hidden" name="user_id" value="<?php echo $user_id; ?>">
+                        <td><input class="btn btn-link" type="submit" name="delete" value="Delete"></td>
+                    </form>
                 </tr> <?php
             } ?>
 

@@ -146,7 +146,12 @@
     </div>
 
     <div class="form-group">
-            <a class="btn btn-danger" href="posts.php?source=view_all_posts&delete=<?php echo $post_id_toedit; ?>">Delete</a>
+            <?php include "includes/delete_post.php"; ?>
+            <form method="post">
+                <input type="hidden" name="post_id" value="<?php echo $post_id_toedit; ?>">
+                <td><input class="btn btn-danger" type="submit" name="delete" value="Delete"></td>
+            </form>
+            <!-- <a class="btn btn-danger" href="posts.php?source=view_all_posts&delete=<?php //echo $post_id_toedit; ?>">Delete</a> -->
             <input type="submit" class="btn btn-danger" name="reset_views" value="Reset Views">  
             <input type="submit" class="btn btn-primary" name="update_post" value="Edit">  
 

@@ -1,7 +1,7 @@
 <?php
-    if(isset($_GET['delete'])  && is_admin($_SESSION['username']))
+    if(isset($_POST['delete']))
     {
-        $post_id_todelete = escape($_GET['delete']);
+        $post_id_todelete = escape($_POST['post_id']);
         $query ="DELETE FROM posts WHERE post_id = $post_id_todelete";
         $delete_post_query = mysqli_query($connection,$query);
         
