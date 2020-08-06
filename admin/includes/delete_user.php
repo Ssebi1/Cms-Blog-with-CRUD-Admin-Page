@@ -1,5 +1,5 @@
 <?php
-    if(isset($_GET['delete']) && isset($_SESSION['user_role']) && $_SESSION['user_role'] == 'admin')
+    if(isset($_GET['delete']) && is_admin($_SESSION['username']))
         {
             $user_id_todelete = escape($connection,$_GET['delete']);
 

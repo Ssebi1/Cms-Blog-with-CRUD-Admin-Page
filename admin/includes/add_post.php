@@ -1,5 +1,5 @@
 <?php
-    if(isset($_POST['add_post']))
+    if(isset($_POST['add_post']) && is_admin($_SESSION['username']))
     {
         $post_title       = escape($_POST['post_title']);
         $post_category_id = escape($_POST['post_category']);

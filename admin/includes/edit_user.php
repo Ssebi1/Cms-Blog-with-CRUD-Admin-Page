@@ -24,7 +24,7 @@
 
 
 
-    if(isset($_POST['edit_user']))
+    if(isset($_POST['edit_user'])  && is_admin($_SESSION['username']))
     {
         $user_firstname = escape($_POST['user_firstname']);
         $user_lastname  = escape($_POST['user_lastname']);

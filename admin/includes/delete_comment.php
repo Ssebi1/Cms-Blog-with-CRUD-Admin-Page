@@ -1,5 +1,5 @@
 <?php
-        if(isset($_SESSION['user_role']) && $_SESSION['user_role'] == 'admin' && isset($_GET['delete']))
+        if(isset($_GET['delete']) && is_admin($_SESSION['username']))
             {
                 $comment_id_todelete =escape($_GET['delete']);
 

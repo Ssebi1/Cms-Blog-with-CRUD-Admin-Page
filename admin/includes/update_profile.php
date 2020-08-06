@@ -20,7 +20,7 @@
     }
 
     //Update user data in db
-    if(isset($_POST['update_user']))
+    if(isset($_POST['update_user'])  && is_admin($_SESSION['username']))
     {
         $user_firstname  = escape($_POST['user_firstname']);
         $user_lastname   = escape($_POST['user_lastname']);

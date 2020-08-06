@@ -1,5 +1,5 @@
 <?php
-    if(isset($_GET['edit_id']))
+    if(isset($_GET['edit_id'])  && is_admin($_SESSION['username']))
     {
         $post_id_toedit = escape($_GET['edit_id']);
     

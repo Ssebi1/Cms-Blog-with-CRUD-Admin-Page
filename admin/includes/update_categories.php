@@ -22,7 +22,7 @@
         ?>
 
         <?php
-            if(isset($_POST['update_category']))
+            if(isset($_POST['update_category']) && is_admin($_SESSION['username']))
             {
                 $cat_title_toupdate = escape($_POST['cat_title']);
                 $query = "UPDATE categories SET cat_title = '{$cat_title_toupdate}' WHERE cat_id = {$cat_id}";
