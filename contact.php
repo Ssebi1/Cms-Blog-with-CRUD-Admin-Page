@@ -1,6 +1,6 @@
-<?php
-include "includes/db.php";
-include "includes/header.php";
+    <?php
+    include "includes/db.php";
+    include "includes/header.php";
 
         if(isset($_POST['submit']))
         {
@@ -12,10 +12,7 @@ include "includes/header.php";
             mail("sebidancau1234@gmail.com",$subject,$body);
         }
 
-        
-
     ?>
-
 
     <!-- Navigation -->
     
