@@ -12,14 +12,10 @@ include "includes/header.php";
             $password = password_hash($password,PASSWORD_BCRYPT,array('cost' => 10));
 
             //Duplicate User
-            $query = "SELECT * FROM users WHERE username = '$username' ";
-            $find_duplicate_user = mysqli_query($connection, $query);
-            $count_duplicate_user=mysqli_num_rows($find_duplicate_user);
+            
 
             //Duplicate Email
-            $query = "SELECT * FROM users WHERE user_email = '$email' ";
-            $find_duplicate_email = mysqli_query($connection, $query);
-            $count_duplicate_email=mysqli_num_rows($find_duplicate_email);
+            
 
             if(empty($username) || empty($password) || empty($email))
             {
@@ -30,18 +26,18 @@ include "includes/header.php";
                     </div>
                 <?php
             }
-            else if($count_duplicate_user > 0 || $count_duplicate_email> 0)
+            else if(duplicate_user($username) || duplicate_email($email))
             {
-                if($count_duplicate_user > 0)
+                if(duplicate_user($username))
                 {
                     ?>
                     <div class="alert alert-danger alert-dismissible fade in center-block" style="width: 50%;">
                         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                        <p>Username is not available.</p>
+                        <p>Username is already used for another account.</p>
                     </div>
                     <?php
                 }
-                if($count_duplicate_email > 0)
+                if(duplicate_email($email))
                 {
                     ?>
                     <div class="alert alert-danger alert-dismissible fade in center-block" style="width: 50%;">

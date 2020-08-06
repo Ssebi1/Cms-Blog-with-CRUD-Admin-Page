@@ -44,7 +44,7 @@
                                 <?php
                                     if(isset($_SESSION['user_role']))
                                     {
-                                        if(isset($_GET['post_id']) && $_SESSION['user_role']=="admin")
+                                        if(is_admin($_SESSION['username']))
                                         {
                                             ?>
                                                 <small style="font-size: 17px;">

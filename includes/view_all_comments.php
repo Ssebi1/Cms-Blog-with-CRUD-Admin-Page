@@ -25,7 +25,7 @@
                         <h4 class="media-heading"><?php echo $comment_author ?>
   
                             <small><?php echo $comment_date ?></small>
-                            <?php if(isset($_SESSION['user_role']) && $_SESSION['user_role'] == 'admin')
+                            <?php if(is_admin($_SESSION['username']))
                             {
                                 ?><a href="admin/comments.php?delete=<?php echo $comment_id;?>&source=front&post_id=<?php echo $post_id;?>" style="font-size:13px; cursor:pointer;color:red;float:right;">Delete</a><?php
                             }?>
